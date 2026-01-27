@@ -1,0 +1,37 @@
+@startuml
+participant "System Source" as SC
+queue "queue fin messages" as qfm
+participant "Service In" as In
+queue "topic store in" as tSIn
+participant "Service Store IN DB" as SINDB
+queue "topic Router" as tR
+participant "Service Router" as MSR
+database "OpenSearch" as OS
+
+SC ->> qfm: отправка финансового сообщения
+SC++
+qfm ->> In: получение финансового сообщения
+alt проверка пройдена
+In++
+In -> In: Проверка порядка расположения блоков сообщения
+In -> In: Обработка сообщения парсинг на metadata и business data
+In ->> tSIn: отправить сообщение в формате JSON в Kafka topic
+tSIn++
+else проверка не пройдена
+In -> In: сформировать nack (отрицательный ответ)
+In --> qfm: NACK отрицательный ответ
+In--
+end alt
+qfm --> SC: NACK отрицательный ответ
+SC ->> qfm: повторная отправка ФС
+SC--
+qfm ->> In: повторная отправка ФС
+loop отправка сообщения по retry кол-во попыток = 3
+tSIn ->> SINDB++: отправить сообщение в сервис отправки сообщений БД
+SINDB --> tSIn--: Запросить сообщение Retry
+tSIn--
+end loop
+SINDB -> OS: отправить сообщение в формате JSON в index Messages
+In ->> tR: отправка в топик
+tR ->> MSR: получение сообщения
+@enduml

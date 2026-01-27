@@ -1,0 +1,59 @@
+@startuml
+!include  https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+'skinparam linetype ortho
+LAYOUT_TOP_DOWN()
+LAYOUT_WITH_LEGEND()
+
+Person(user, "User","User System and Settings")
+System_Boundary(arch1, "System for Routing and Processing Financial Messages") {
+    Container(Gateway, "Gateway API", "SpringBoot")
+    Container(LoadBalancer, "LoadBalancer", "LoadBalancer")
+    Container(Head, "Head", "SpringBoot")
+    Container(Router, "Router", "SpringBoot")
+    Container(In, "In", "SpringBoot")
+    Container(Out, "Out", "SpringBoot")
+    Container(StoreInDB, "StoreInDB", "SpringBoot")
+    Container(Archive, "Archive Service", "SpringBoot")
+    Container(ServiceCheck, "Service Check", "SpringBoot")
+    ContainerDb(PostgreSQL, "DB Settings","PostgreSQL")
+    ContainerDb(OpenSearch, "Cache, Index DB ","OpenSearch")
+    ContainerDb(ClickHouse, "Archive Store DB","ClickHouse")
+    SystemQueue("Kafka", "Kafka", "Kafka")
+
+
+}
+System(ServerQ, "Broker Queues", "Server Apache Active MQ")
+System_Boundary(arch2, "Sources Financial Messages") {
+System(Sources1, "Source 1", "Source of financial messages")
+System(SourcesN, "Source N", "Source of financial messages")
+}
+
+Rel(user, LoadBalancer, "https", "methods API and filter")
+Rel(LoadBalancer, Gateway, "https", "methods API and filter")
+Rel(Gateway, Head, "https", "https")
+Rel_L(ServerQ, In, "Finance Message", "Message in queue, protocol Core, port 61616")
+Rel(Sources1, ServerQ, "Inbound Finance Message", "Message in queue, protocol Core, port 61616")
+Rel(ServerQ, Sources1, "Outbound Finance Message", "Message in queue, protocol Core, port 61616")
+
+Rel(SourcesN, ServerQ, "Inbound Finance Message", "Message in queue, protocol Core, port 61616")
+Rel(ServerQ, SourcesN, "Outbound Finance Message", "Message in queue, protocol Core, port 61616")
+
+Rel_R(In, Router, "topic Router", "Kafka, port 9092")
+Rel_R(Router, Head, "topic Head", "Kafka, port 9092")
+
+Rel_R(Out, ServerQ, "Finance Message", "Message in queue, protocol Core, port 61616")
+Rel_D(Head, Router, "topic Router", "Kafka, port 9092")
+Rel_D(Router, Out, "topic Out", "Kafka, port 9092")
+Rel_D(StoreInDB, OpenSearch, "https", "https, port 9200")
+Rel_D(Router, StoreInDB, "topic StoreInDB", "Kafka, port 9092")
+Rel_D(Head, StoreInDB, "topic StoreInDB", "Kafka, port 9092")
+Rel_D(In, StoreInDB, "topic StoreInDB", "Kafka, port 9092")
+Rel_D(Archive, ClickHouse, "ODBC", "TCP, port 8443")
+Rel_D(Head, Archive, "topic Archive", "Kafka, port 9092")
+Rel_D(Head, PostgreSQL, "ODBC", "TCP, port 5432")
+Rel_D(ServiceCheck, Head, "topic Head", "Kafka, port 9092")
+Rel_D(Head, ServiceCheck, "topic ServiceCheck", "Kafka, port 9092")
+
+@enduml
+
+
