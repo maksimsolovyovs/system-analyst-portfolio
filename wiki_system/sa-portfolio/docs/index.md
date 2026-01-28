@@ -28,7 +28,8 @@
 - Collaboration with architects & security teams
 - Scrum-based cross-functional teamwork
 
-**Key Projects:**
+### Key Projects
+
 1. **Electronic Financial Message Processing & Routing System (SWIFT)**
     - Legacy monolith → microservices migration
     - 15 integrations connected, unified message delivery via message broker
