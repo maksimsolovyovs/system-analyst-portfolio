@@ -1,0 +1,47 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Environment-dependent path to Maven home directory
+/mavenHomeManager.xml
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# --- Python ---
+# Виртуальное окружение
+venv/
+env/
+ENV/
+
+# Компилированные файлы Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Логи
+*.log
+
+# Файлы среды
+*.env
+*.venv
+
+# --- IDE и редакторы ---
+# Игнорируем все .idea папки
+.idea/
+.vscode/
+
+# --- MacOS специфические файлы ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# --- MkDocs / документация ---
+# Статические файлы сборки
+site/
+*.tmp
+*.bak
+
+# --- Прочее ---
+*.iml
