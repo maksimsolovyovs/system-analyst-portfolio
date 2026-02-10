@@ -2,6 +2,10 @@ site_name: Maksim Solovyov – Portfolio
 nav:
   - Home: index.md
   - Projects:
+      - Example project:
+          - DTO for serialized: projects/DTO_for_serialized.md
+          - Use cases: projects/use_cases.md
+          - User story: projects/userstory.md
       - SWIFT Message System: projects/electronic_financial_messages.md
       - Message Authentication: projects/financial_message_authentication.md
       - Long-Term Storage: projects/long_term_storage.md
