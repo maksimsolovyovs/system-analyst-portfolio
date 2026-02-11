@@ -1,0 +1,23 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+Container(validatorModule, "Validation Module", "Java", "Validates message syntax")
+Container(messageProducer, "Message Producer", "Kafka", "Sends messages to the queue")
+
+'=========================================================
+' Level 3: Component Diagram (inside Routing Engine)
+'=========================================================
+Container_Boundary(re_boundary, "Routing Engine") {
+    Component(ruleLoader, "Rule Loader", "Spring Component", "Loads rules from cache/database")
+    Component(ruleMatcher, "Rule Matcher", "Drools Engine", "Matches message attributes against rules")
+    Component(priorityResolver, "Priority Resolver", "Java Logic", "Resolves rule conflicts by priority/weight")
+    Component(destResolver, "Destination Resolver", "Service", "Determines the final destination")
+}
+
+Rel(validatorModule, ruleMatcher, "Route request", "Internal Call")
+Rel(ruleLoader, ruleMatcher, "Provides rule set")
+Rel(ruleMatcher, priorityResolver, "List of matches")
+Rel(priorityResolver, destResolver, "Best match")
+Rel(destResolver, messageProducer, "Final route", "Internal Call")
+
+@enduml

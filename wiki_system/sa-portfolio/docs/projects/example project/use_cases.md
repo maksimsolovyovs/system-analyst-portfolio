@@ -1,9 +1,9 @@
 #### UC-01 - Incoming MT103 Processing
 
 **Actors**
--Core Banking System
--SWIFT Route Service
--Payment Processing Service
+- Core Banking System
+- SWIFT Route Service
+- Payment Processing Service
 
 **Main Scenario**
 1. Core Banking System sends MT103 to Route Service via MQ

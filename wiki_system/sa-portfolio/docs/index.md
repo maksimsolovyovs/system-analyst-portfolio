@@ -112,6 +112,11 @@
 - [Financial Message Authentication System](projects/financial_message_authentication.md)
 - [Long-Term Storage System for Financial Messages](projects/long_term_storage.md)
 
+## Example project SWIFT
+
+- [DTO for serialized](projects/example project/DTO_for_serialized.md)
+- [Use cases](projects/example project/use_cases.md)
+- [User story](projects/example project/userstory.md)
 ---
 
 *Generated for MkDocs portfolio use.*

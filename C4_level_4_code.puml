@@ -1,0 +1,38 @@
+@startuml
+!include  https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+'=========================================================
+' Level 4: Code Diagram (class)
+'=========================================================
+
+package "Domain Models" {
+    class SwiftMessageDTO {
+        +String messageId
+        +String messageType
+        +String senderBic
+        +String currency
+        +BigDecimal amount
+    }
+
+    class RoutingRule {
+        +String ruleId
+        +Integer priority
+        +String targetSystem
+        +isValid(dto: SwiftMessageDTO): boolean
+    }
+}
+
+package "Core Services" {
+    class SwiftMessageProcessor {
+        +process(rawPayload: String): void
+    }
+    class RoutingService {
+        +findRoute(message: SwiftMessageDTO): RoutingRule
+    }
+}
+
+SwiftMessageProcessor ..> SwiftMessageDTO : "creates"
+RoutingService --> RoutingRule : "uses for lookup"
+SwiftMessageProcessor --> RoutingService : "delegates"
+
+@enduml

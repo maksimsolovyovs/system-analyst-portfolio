@@ -1,0 +1,62 @@
+@startuml
+!include  https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+' Display settings
+LAYOUT_WITH_LEGEND()
+title SWIFT Routing Service Design
+
+'=========================================================
+' Level 1: System Context
+'=========================================================
+System_Ext(coreBank, "Core Banking System", "Source of SWIFT MT messages")
+System_Ext(amlSystem, "AML System", "Compliance and sanctions screening system")
+System_Ext(paymentEngine, "Payment Engine", "Payment processing engine")
+
+System(swiftRouter, "SWIFT Routing Service", "Central routing and validation hub")
+
+Rel(coreBank, swiftRouter, "Sends MT messages", "REST/MQ")
+Rel(swiftRouter, amlSystem, "Compliance check request (Sanctions/AML)", "gRPC/REST")
+Rel(swiftRouter, paymentEngine, "Transfers validated payments", "Kafka/MQ")
+
+newpage
+
+'=========================================================
+' Level 2: Container Diagram
+'=========================================================
+System_Boundary(swift_boundary, "SWIFT Routing Service") {
+    Container(restApi, "API Gateway / Controller", "Spring Boot", "Receives incoming requests and handles authentication")
+    Container(parserModule, "Parser Module", "Java / Prowide", "Deserializes MT formats into Java objects")
+    Container(validatorModule, "Validation Module", "Java / Hibernate Validator", "Performs syntax and business validation")
+    Container(routingEngine, "Routing Engine", "Drools / Spring Service", "Applies routing rules")
+    ContainerDb(auditDb, "Audit DB", "PostgreSQL", "Stores processing history and logs")
+    Container(messageProducer, "Message Producer", "Kafka", "Sends messages to target systems")
+}
+
+Rel(coreBank, restApi, "Sends message", "HTTPS/JSON")
+Rel(restApi, parserModule, "Invokes", "Internal Call")
+Rel(parserModule, validatorModule, "Passes DTO", "Internal Call")
+Rel(validatorModule, routingEngine, "Passes validated object", "Internal Call")
+Rel(routingEngine, messageProducer, "Send command", "Internal Call")
+Rel(routingEngine, auditDb, "Writes log", "JDBC/JPA")
+Rel(messageProducer, paymentEngine, "Publishes event", "Topic: payment_processed")
+
+newpage
+
+'=========================================================
+' Level 3: Component Diagram (inside Routing Engine)
+'=========================================================
+Container_Boundary(re_boundary, "Routing Engine") {
+    Component(ruleLoader, "Rule Loader", "Spring Component", "Loads rules from cache/database")
+    Component(ruleMatcher, "Rule Matcher", "Drools Engine", "Matches message attributes against rules")
+    Component(priorityResolver, "Priority Resolver", "Java Logic", "Resolves rule conflicts by priority/weight")
+    Component(destResolver, "Destination Resolver", "Service", "Determines the final destination")
+}
+
+Rel(validatorModule, ruleMatcher, "Route request")
+Rel(ruleLoader, ruleMatcher, "Provides rule set")
+Rel(ruleMatcher, priorityResolver, "List of matches")
+Rel(priorityResolver, destResolver, "Best match")
+Rel(destResolver, messageProducer, "Final route")
+
+@enduml
