@@ -114,9 +114,9 @@
 
 ## Example project SWIFT
 
-- [DTO for serialized](projects/example project/DTO_for_serialized.md)
-- [Use cases](projects/example project/use_cases.md)
-- [User story](projects/example project/userstory.md)
+- [DTO for serialized](projects/example_project/DTO_for_serialized.md)
+- [Use cases](projects/example_project/use_cases.md)
+- [User story](projects/example_project/userstory.md)
 ---
 
 *Generated for MkDocs portfolio use.*
