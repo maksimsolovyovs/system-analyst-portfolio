@@ -1321,33 +1321,13 @@ Target System</p>
 "payload": "string"
 }</p>
 <h5 id="3114">3.1.1.4 Обработка запроса</h5>
-<ul>
-<li>
 <ol>
 <li>Сервис валидирует SWIFT сообщение</li>
-</ol>
-</li>
-<li>
-<ol>
 <li>Генерирует routingId по алгоритму snowflake</li>
-</ol>
-</li>
-<li>
-<ol>
 <li>Формирует routing event</li>
-</ol>
-</li>
-<li>
-<ol>
 <li>Публикует сообщение в Kafka topic: swift.inbound</li>
-</ol>
-</li>
-<li>
-<ol>
 <li>Сохраняет статус: ROUTED</li>
 </ol>
-</li>
-</ul>
 <h5 id="3115">3.1.1.5 Ответ</h5>
 <table>
 <thead>
@@ -1444,8 +1424,8 @@ Target System</p>
 </thead>
 <tbody>
 <tr>
-<td>RECEIVED</td>
-<td>Сообщение получено</td>
+<td>ROUTED</td>
+<td>Сообщение маршрутизировано</td>
 </tr>
 <tr>
 <td>VALIDATED</td>
