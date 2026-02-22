@@ -1,0 +1,1183 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Software Requirements Specification - Maksim Solovyov - Portfolio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#software-requirements-specification" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Maksim Solovyov - Portfolio" class="md-header__button md-logo" aria-label="Maksim Solovyov - Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Maksim Solovyov - Portfolio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Software Requirements Specification
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Maksim Solovyov - Portfolio" class="md-nav__button md-logo" aria-label="Maksim Solovyov - Portfolio" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Maksim Solovyov - Portfolio
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Example project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DTO_for_serialized/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DTO for serialized
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use_cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../userstory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User story
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electronic_financial_messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SWIFT Message System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../financial_message_authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Message Authentication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../long_term_storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long-Term Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.Введение
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.Введение">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Цель документа
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Область применения
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.Общее описание
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.Общее описание">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Архитектурный контекст
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Основные компоненты
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.Фунциональные требования
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.Фунциональные требования">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Интерфейс системы
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Интерфейс системы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-post-swiftv1messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 Метод: POST /swift/v1/messages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1.1 Метод: POST /swift/v1/messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3111" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1.1 Описание
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3112-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1.2 HTTP Запрос
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1.3 Тело запроса
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3114" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1.4 Обработка запроса
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3115" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1.5 Ответ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-get-swiftmessagesroutingid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 Метод: GET /swift/messages/{routingId}
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1.2 Метод: GET /swift/messages/{routingId}">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3121" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2.1 Описание
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3122" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2.2 Ответ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-kafka-integration-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Kafka Integration Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Kafka Integration Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-inbound-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Inbound Topic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-outbound-topic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Outbound Topic
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Статусы обработки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Нефункциональные требования
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Ограничения
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="software-requirements-specification">Software Requirements Specification</h1>
+<p>REST API for Service Router</p>
+<h2 id="1">1.Введение</h2>
+<h3 id="11">1.1 Цель документа</h3>
+<p>Данный документ описывает функциональные и нефункциональные требования к REST API сервиса маршрутизации SWIFT FIN сообщения</p>
+<p>Сервис обеспечивает: 
+- прием SWIFT сообщений через REST API
+- публикацию сообщений во входящий Kafka topic
+- асинхронную маршрутизацию сообщений
+- передачу обработанных сообщений в выходящий Kafka topic
+- получение статуса маршрутизации "routed"</p>
+<h3 id="12">1.2 Область применения</h3>
+<p>Сервис используется для маршрутизации финансовых сообщений SWIFT между внутренними банковскими системами.</p>
+<h2 id="2">2.Общее описание</h2>
+<h3 id="21">2.1 Архитектурный контекст</h3>
+<p>Client System -&gt;
+POST /swift/messages -&gt;
+Routing REST Service -&gt;
+Kafka Topic (swift.inbound) -&gt;
+Routing Worker -&gt;
+Kafka Topic (swift.outbound) -&gt;
+Target System</p>
+<h3 id="22">2.2 Основные компоненты</h3>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REST Routing API</td>
+<td>Приём SWIFT сообщений</td>
+</tr>
+<tr>
+<td>Inbound Topic</td>
+<td>Очередь входящих сообщений</td>
+</tr>
+<tr>
+<td>Routing Worker</td>
+<td>Определение маршрута</td>
+</tr>
+<tr>
+<td>Outbound Topic</td>
+<td>Очередь исходящих сообщений</td>
+</tr>
+<tr>
+<td>Status Store</td>
+<td>Хранение статусов обработки</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3">3.Фунциональные требования</h2>
+<h3 id="31">3.1 Интерфейс системы</h3>
+<h4 id="311-post-swiftv1messages">3.1.1 Метод: POST /swift/v1/messages</h4>
+<h5 id="3111">3.1.1.1 Описание</h5>
+<p>Метод принимает SWIFT сообщение для последующей асинхронной маршрутизации</p>
+<h5 id="3112-http">3.1.1.2 HTTP Запрос</h5>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Метод</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>/swift/v1/messages</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody>
+</table>
+<h5 id="3113">3.1.1.3 Тело запроса</h5>
+<p>{
+"messageId": "string",
+"swiftType": "MT103",
+"payload": "string"
+}</p>
+<h5 id="3114">3.1.1.4 Обработка запроса</h5>
+<ul>
+<li>
+<ol>
+<li>Сервис валидирует SWIFT сообщение</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Генерирует routingId по алгоритму snowflake</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Формирует routing event</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Публикует сообщение в Kafka topic: swift.inbound</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Сохраняет статус: ROUTED</li>
+</ol>
+</li>
+</ul>
+<h5 id="3115">3.1.1.5 Ответ</h5>
+<table>
+<thead>
+<tr>
+<th>Код</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>202 Accepted</td>
+<td>Сообщение принято</td>
+</tr>
+</tbody>
+</table>
+<p>{
+"routingId": "uuid",
+"statusUrl": "/swift/messages/{routingId}"
+}</p>
+<h4 id="312-get-swiftmessagesroutingid">3.1.2 Метод: GET /swift/messages/{routingId}</h4>
+<h5 id="3121">3.1.2.1 Описание</h5>
+<p>Метод возвращает текущий статус маршрутизации SWIFT сообщения</p>
+<h5 id="3122">3.1.2.2 Ответ</h5>
+<p>В обработке</p>
+<p>| Код | 202 Accepted |</p>
+<p>{
+"status": "IN_PROGRESS"
+}</p>
+<p>Завершено</p>
+<p>| Код | 200 OK |</p>
+<p>{
+"status": "ROUTED",
+"outboundTopic": "swift.outbound"
+}</p>
+<p>Ошибка</p>
+<p>{
+"status": "FAILED",
+"errorCode": "ROUTING_ERROR"
+}</p>
+<h2 id="4-kafka-integration-requirements">4. Kafka Integration Requirements</h2>
+<h3 id="41-inbound-topic">4.1 Inbound Topic</h3>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic Name</td>
+<td>swift.inbound</td>
+</tr>
+<tr>
+<td>Key</td>
+<td>routingId</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>SWIFT Routing Event</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-outbound-topic">4.2 Outbound Topic</h3>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic Name</td>
+<td>swift.outbound</td>
+</tr>
+<tr>
+<td>Key</td>
+<td>routingId</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>Routed SWIFT Message</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5">5. Статусы обработки</h2>
+<table>
+<thead>
+<tr>
+<th>Статус</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RECEIVED</td>
+<td>Сообщение получено</td>
+</tr>
+<tr>
+<td>VALIDATED</td>
+<td>Прошло валидацию</td>
+</tr>
+<tr>
+<td>IN_PROGRESS</td>
+<td>В маршрутизации</td>
+</tr>
+<tr>
+<td>ROUTED</td>
+<td>Отправлено в outbound</td>
+</tr>
+<tr>
+<td>FAILED</td>
+<td>Ошибка маршрутизации</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6">6. Нефункциональные требования</h2>
+<table>
+<thead>
+<tr>
+<th>Требование</th>
+<th>Значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Latency POST</td>
+<td>≤ 150 мс</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>≥ 1000 msg/sec</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>At-least-once</td>
+</tr>
+<tr>
+<td>Availability</td>
+<td>99.99%</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>TLS + OAuth2 + JWT</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7">7. Ограничения</h2>
+<ul>
+<li>Kafka cluster должен быть доступен</li>
+<li>Routing Worker должен быть подписан на topic: swift.inbound</li>
+<li>ACL kafka User:consumer-user, read swift.inbound  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
