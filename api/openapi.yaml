@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: SWIFT Routing REST API
+  description: REST API for asynchronous SWIFT message routing via Kafka topics
+  version: 1.0.0
+
+servers:
+  - url: https://api.routing-service.com
+
+paths:
+
+  /swift/messages:
+    post:
+      summary: Submit SWIFT message for routing
+      description: Accepts SWIFT message and publishes it to inbound Kafka topic for asynchronous routing
+      operationId: submitSwiftMessage
+      tags:
+        - Routing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SwiftRoutingRequest'
+      responses:
+        '202':
+          description: Message accepted for routing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutingAcceptedResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+
+  /swift/messages/{routingId}:
+    get:
+      summary: Get routing status
+      description: Returns current routing status of SWIFT message
+      operationId: getRoutingStatus
+      tags:
+        - Routing
+      parameters:
+        - name: routingId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Routing completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutingCompletedResponse'
+        '202':
+          description: Routing in progress
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutingInProgressResponse'
+        '404':
+          description: Routing ID not found
+        '500':
+          description: Internal server error
+
+components:
+
+  schemas:
+
+    SwiftRoutingRequest:
+      type: object
+      required:
+        - messageId
+        - swiftType
+        - payload
+      properties:
+        messageId:
+          type: string
+          description: Unique SWIFT message identifier
+        swiftType:
+          type: string
+          example: MT103
+        payload:
+          type: string
+          description: Raw SWIFT message content
+
+    RoutingAcceptedResponse:
+      type: object
+      properties:
+        routingId:
+          type: string
+          format: uuid
+        statusUrl:
+          type: string
+          example: /swift/messages/{routingId}
+
+    RoutingInProgressResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: IN_PROGRESS
+
+    RoutingCompletedResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ROUTED
+        outboundTopic:
+          type: string
+          example: swift.outbound
