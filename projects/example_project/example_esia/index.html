@@ -580,6 +580,62 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Описание">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fallback-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Поток на fallback при возникновении Exception
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Поток на fallback при возникновении Exception">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kyc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ошибка при автоматической проверке KYC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ошибка при работе с MDM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ошибка при проверке полномочий представителя
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -736,6 +792,62 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Описание">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fallback-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Поток на fallback при возникновении Exception
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Поток на fallback при возникновении Exception">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kyc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ошибка при автоматической проверке KYC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ошибка при работе с MDM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ошибка при проверке полномочий представителя
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -800,16 +912,22 @@
 4 Система идентификации →
 10 Сайт/11 CRM/12 Мобильное приложение/13 Система управления карточками/14 Система управления платежами/15 Новый продукт</p>
 <p>В Аудит и логирование записываются все события от систем/сервисов слоя идентификация</p>
-<p><strong>Поток на fallback при возникновении Exception</strong><br />
+<h3 id="fallback-exception"><strong>Поток на fallback при возникновении Exception</strong></h3>
+<h4 id="kyc">Ошибка при автоматической проверке KYC</h4>
+<p>6 Сервис проверки личности (KYC) → Exception →
 11 Fallback / Ручная идентификация →
-6 Сервис проверки личности (KYC) →
-11 Fallback / Ручная идентификация →</p>
-<p>11 Fallback / Ручная идентификация →
-7 Централизованная система управления основными данными клиентов (MDM) →
-11 Fallback / Ручная идентификация →</p>
-<p>11 Fallback / Ручная идентификация →
-8 Сервис делегирования →
-11 Fallback / Ручная идентификация →</p>
+4 Система идентификации →
+7 Централизованная система управления основными данными клиентов (MDM)</p>
+<h4 id="mdm">Ошибка при работе с MDM</h4>
+<p>7 Централизованная система управления основными данными клиентов (MDM) → Exception →
+11 Fallback / Ручная идентификация →
+4 Система идентификации →
+8 Сервис делегирования</p>
+<h4 id="_4">Ошибка при проверке полномочий представителя</h4>
+<p>8 Сервис делегирования → Exception →
+11 Fallback / Ручная идентификация →
+4 Система идентификации →
+9 Сервис авторизации</p>
 
 
 
@@ -830,7 +948,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 9, 2026 15:11:03 UTC">March 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 9, 2026 16:02:15 UTC">March 9, 2026</span>
   </span>
 
     
